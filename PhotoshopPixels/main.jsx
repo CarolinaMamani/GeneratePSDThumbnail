@@ -21,49 +21,7 @@ for (var i = 0; i < app.documents.length; i++) {
             continue; // Skip to the next document
         }
         
-        // Select specific layers
-        var layersToDuplicate = ["light1", "light2", "shad1", "shad2"];
-        var layersFound = [];
-        for (var j = 0; j < layersToDuplicate.length; j++) {
-            var layer = doc.artLayers.getByName(layersToDuplicate[j]);
-            if (layer) {
-                layersFound.push(layer);
-            } 
-        }
-
-        // Ask user to choose destination
-        var result = app.dialogs.add("Choose the destination:");
-        var dialogColumns = result.dialogColumns;
-        var buttonsGroup = dialogColumns.add().buttonGroup;
-        var backButton = buttonsGroup.add("button", undefined, "Back");
-        var frontButton = buttonsGroup.add("button", undefined, "Front");
-        var sideLButton = buttonsGroup.add("button", undefined, "Side-L");
-        var sideRButton = buttonsGroup.add("button", undefined, "Side-R");
-        var userChoice = result.show();
-        result.close();
-        
-        // Process user choice
-        var destination;
-        if (userChoice === 1) {
-            destination = "Back";
-        } else if (userChoice === 2) {
-            destination = "Front";
-        } else if (userChoice === 3) {
-            destination = "Side-L";
-        } else if (userChoice === 4) {
-            destination = "Side-R";
-        } else {
-            continue; // Skip to the next document if user cancels
-        }
-        
-        // Assuming the corresponding document is open
-        var destinationDoc = app.documents.getByName(destination);
-        app.activeDocument = doc; // Set the current document as active again
-        
-        // Duplicate specified layers to destination document
-        for (var k = 0; k < layersFound.length; k++) {
-            layersFound[k].duplicate(destinationDoc);
-        }
+      ///insert function duplicate.jsx
         
         // Select layer named "Layer 1" in the destination document
         var layerInDestination = destinationDoc.artLayers.getByName("Layer 1");
