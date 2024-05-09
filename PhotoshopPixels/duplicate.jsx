@@ -41,8 +41,9 @@ function duplicateLayersToDestination(doc, layersToDuplicate, destinationName) {
 // Function to handle button click events
 function buttonClickHandler(buttonName) {
     var doc = app.activeDocument; // Get the currently active document
-    var layersToDuplicate = ["light1", "light2", "shad1", "shad2"];
+    var layersToDuplicate = ["shad1", "shad2","light1", "light2"];
     duplicateLayersToDestination(doc, layersToDuplicate, buttonName);
+    dialog.close(); // Close the dialog after selecting an option
 }
 
 // Create a dialog with buttons for choosing the destination
