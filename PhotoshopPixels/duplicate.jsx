@@ -22,12 +22,6 @@ function duplicateLayersToDestination(doc, layersToDuplicate, destinationName) {
 
     // If all layers are found, proceed with the duplication process
     if (layersFound.length === layersToDuplicate.length) {
-        // Ask user to choose destination
-        var destinationName = prompt("Choose the destination:\n- 'Back'\n- 'Front'\n- 'Side-L'\n- 'Side-R'");
-        if (!destinationName) {
-            return; // Exit if user cancels
-        }
-        
         // Find the destination document based on the user's choice
         var destinationDoc = findDocumentWithNameAndExtension(destinationName, ".gif");
         if (!destinationDoc) {
@@ -44,7 +38,26 @@ function duplicateLayersToDestination(doc, layersToDuplicate, destinationName) {
     }
 }
 
-// Usage example
-var doc = app.activeDocument; // Get the currently active document
-var layersToDuplicate = ["light1", "light2", "shad1", "shad2"];
-duplicateLayersToDestination(doc, layersToDuplicate);
+// Function to handle button click events
+function buttonClickHandler(buttonName) {
+    var doc = app.activeDocument; // Get the currently active document
+    var layersToDuplicate = ["light1", "light2", "shad1", "shad2"];
+    duplicateLayersToDestination(doc, layersToDuplicate, buttonName);
+}
+
+// Create a dialog with buttons for choosing the destination
+var dialog = new Window("dialog", "Choose Destination");
+var buttonsGroup = dialog.add("group");
+var backButton = buttonsGroup.add("button", undefined, "Back");
+var frontButton = buttonsGroup.add("button", undefined, "Front");
+var sideLButton = buttonsGroup.add("button", undefined, "Side-L");
+var sideRButton = buttonsGroup.add("button", undefined, "Side-R");
+
+// Add event listeners to buttons
+backButton.onClick = function () { buttonClickHandler("Back"); };
+frontButton.onClick = function () { buttonClickHandler("Front"); };
+sideLButton.onClick = function () { buttonClickHandler("Side-L"); };
+sideRButton.onClick = function () { buttonClickHandler("Side-R"); };
+
+// Show the dialog
+dialog.show();
