@@ -1,9 +1,8 @@
-// Function to handle button click events
-function buttonClickHandler(buttonName) {
+function buttonClickHandler(buttonName, dialog) {
     var doc = app.activeDocument; // Get the currently active document
-    var layersToDuplicate = ["shad1", "shad2","light1", "light2"];
+    var layersToDuplicate = ["shad1", "shad2", "light1", "light2"];
     duplicateLayersToDestination(doc, layersToDuplicate, buttonName);
-    
+
     var destinationDoc = findDocumentWithNameAndExtension(buttonName, ".gif"); // Find the selected document
     if (!destinationDoc) {
         alert("Could not find a document with the specified name containing '" + buttonName + "' and ending with '.gif'.");

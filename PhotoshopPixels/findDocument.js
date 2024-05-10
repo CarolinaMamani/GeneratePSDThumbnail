@@ -1,3 +1,6 @@
+
+
+
 // Function to find a document with the specified name and ending with ".gif"
 function findDocumentWithNameAndExtension(nameContains, extension) {
     for (var i = 0; i < app.documents.length; i++) {

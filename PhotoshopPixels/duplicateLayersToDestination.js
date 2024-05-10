@@ -1,3 +1,5 @@
+
+
 // Function to duplicate specific layers from the current document to a specified destination document
 function duplicateLayersToDestination(doc, layersToDuplicate, destinationName) {
     // Select specific layers
